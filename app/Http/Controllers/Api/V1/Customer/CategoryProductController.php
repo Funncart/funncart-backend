@@ -14,7 +14,7 @@ class CategoryProductController extends Controller
     {
         $products = $category->products()
             ->whereHas('productVariants')
-            ->with('media')
+            ->with('media', 'productVariants')
             ->withSum('productVariants', 'qty')
             ->get();
         

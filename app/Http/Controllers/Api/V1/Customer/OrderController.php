@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1\Customer;
 use App\Helper\Shipment;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer\StoreOrderRequest;
+use App\Jobs\OrderEmailJob;
 use App\Models\Customer;
 use App\Models\Order;
 use App\Models\Product;
@@ -69,6 +70,8 @@ class OrderController extends Controller
             $variant->qty = $variant->qty - $item->qty;
             $variant->save();
         }
+
+        OrderEmailJob::dispatch('store.funncart@gmail.com');
 
         return $this->success(
             [
