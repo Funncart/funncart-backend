@@ -23,7 +23,6 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $data = $product
-            ->where('is_visible', true)
             ->load([
                 'media', 
                 'productVariants' => function($query) {
