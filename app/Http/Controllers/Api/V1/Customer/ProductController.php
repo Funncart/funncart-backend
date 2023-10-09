@@ -12,6 +12,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $products = Product::whereHas('productVariants')
+            ->where('is_visible', true)
             ->with('media', 'productVariants')
             ->withSum('productVariants', 'qty')
             ->filter($request)->get();
@@ -22,6 +23,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $data = $product
+            ->where('is_visible', true)
             ->load([
                 'media', 
                 'productVariants' => function($query) {

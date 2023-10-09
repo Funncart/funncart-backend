@@ -13,6 +13,7 @@ class CategoryProductController extends Controller
     public function index(Request $request, Category $category)
     {
         $products = $category->products()
+            ->where('is_visible', true)
             ->whereHas('productVariants')
             ->with('media', 'productVariants')
             ->withSum('productVariants', 'qty')

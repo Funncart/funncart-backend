@@ -12,10 +12,11 @@ class CategoryController extends Controller
 {
     public function index(Request $request)
     {
-        $categories = Category::orderBy('position', 'desc')
+        $categories = Category::where('is_visible', true)
+            ->orderBy('position', 'desc')
             ->with('media')
             ->withCount(['products' => function ($query) {
-                $query->whereHas('productVariants');
+                $query->where('is_visible', true)->whereHas('productVariants');
             }])
             ->filter($request)->get();
             

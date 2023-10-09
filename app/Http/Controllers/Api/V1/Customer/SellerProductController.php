@@ -12,6 +12,7 @@ class SellerProductController extends Controller
     public function index(Request $request, Seller $seller)
     {
         $products = $seller->products()
+            ->where('is_visible', true)
             ->with('media')
             ->withSum('productVariants', 'qty')
             ->get();
