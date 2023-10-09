@@ -71,7 +71,7 @@ class OrderController extends Controller
             $variant->save();
         }
 
-        OrderEmailJob::dispatch('store.funncart@gmail.com');
+        // OrderEmailJob::dispatch('store.funncart@gmail.com');
 
         return $this->success(
             [
