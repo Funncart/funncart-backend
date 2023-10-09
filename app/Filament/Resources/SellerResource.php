@@ -73,12 +73,18 @@ class SellerResource extends Resource
                     ->columnSpan(['lg' => 1])
                     ->hidden(fn (?Seller $record) => $record === null),
                     
-                Forms\Components\Section::make('Images')
+                Forms\Components\Section::make('Display picture')
                     ->schema([
                         SpatieMediaLibraryFileUpload::make('media')
                             ->collection('seller-images')
-                            ->multiple()
-                            ->maxFiles(5)
+                            ->disableLabel(),
+                    ])
+                    ->collapsible(),  
+
+                Forms\Components\Section::make('Cover picture')
+                    ->schema([
+                        SpatieMediaLibraryFileUpload::make('media')
+                            ->collection('seller-images')
                             ->disableLabel(),
                     ])
                     ->collapsible(),  
