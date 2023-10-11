@@ -93,8 +93,7 @@ class CategoryResource extends Resource
                     ->schema([
                         SpatieMediaLibraryFileUpload::make('media')
                             ->collection('category-images')
-                            ->multiple()
-                            ->maxFiles(5)
+                            ->required()
                             ->disableLabel(),
                     ])
                     ->columnSpan(['lg' => fn (?Category $record) => $record === null ? 3 : 2]),
@@ -148,12 +147,12 @@ class CategoryResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            RelationManagers\ProductsRelationManager::class,
-        ];
-    }
+    // public static function getRelations(): array
+    // {
+    //     return [
+    //         RelationManagers\ProductsRelationManager::class,
+    //     ];
+    // }
 
     public static function getPages(): array
     {
