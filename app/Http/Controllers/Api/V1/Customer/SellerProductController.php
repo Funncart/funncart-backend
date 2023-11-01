@@ -13,7 +13,7 @@ class SellerProductController extends Controller
     {
         $products = $seller->products()
             ->where('is_visible', true)
-            ->with('media')
+            ->with('media', 'productVariants')
             ->withSum('productVariants', 'qty')
             ->get();
         
