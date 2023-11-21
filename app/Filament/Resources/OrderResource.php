@@ -318,6 +318,16 @@ class OrderResource extends Resource
                         ->modalWidth('lg');
                 }),
 
+            Forms\Components\Select::make('customer_id')
+                ->relationship('customer', 'phone')
+                ->label('Phone number')
+                ->disabled(),
+
+            Forms\Components\Select::make('customer_id')
+                ->relationship('customer', 'email')
+                ->label('Email address')
+                ->disabled(),
+
             Forms\Components\Select::make('status')
                 ->options([
                     'new' => 'New',
