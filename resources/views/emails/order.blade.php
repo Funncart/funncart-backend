@@ -3,7 +3,7 @@
 
 A new order has been placed. You can get further details about the order by logging into admin panel.
 
-<x-mail::button :url="config('app.url')">
+<x-mail::button :url="config('app.url').'/orders/'.$orderId.'/edit'">
 Click Here
 </x-mail::button>
 
